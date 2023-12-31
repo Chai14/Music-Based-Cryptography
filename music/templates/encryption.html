@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <title>Encryption Page</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Encryption</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ encryption_form.as_p }}
+            {% comment %} <div class="form-group">
+                <label for="textInput">Enter Text:</label>
+                <input type="text" class="form-control" id="textInput" placeholder="Enter text to encrypt">
+            </div>
+
+            <div class="form-group">
+                <label for="midiInput">Upload MIDI File:</label>
+                <input type="file" class="form-control-file" id="midiInput" accept=".mid">
+            </div> {% endcomment %}
+
+            <button type="submit" class="btn btn-primary btn-block">Encrypt My File</button>
+        </form>
+        <br>
+        <br>
+        <a href="{% url 'decryption' %}" class="btn btn-secondary btn-block">Decryption</a>
+    </div>
+
+</body>
+
+</html>

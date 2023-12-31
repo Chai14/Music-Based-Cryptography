@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <title>Decryption Page</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Decryption</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ decryption_form.as_p }}
+            {% comment %} <div class="form-group">
+                <label for="midiInput">Upload Encrypted MIDI File:</label>
+                <input type="file" class="form-control-file" id="midiInput" accept=".mid">
+            </div> {% endcomment %}
+
+            <button type="submit" class="btn btn-danger btn-block">Decrypt My File</button>
+        </form>
+
+        {% comment %} <div class="mt-3">
+            <label for="decryptedText">Decrypted Text:</label>
+            <textarea class="form-control" id="decryptedText" rows="3" readonly></textarea>
+        </div> {% endcomment %}
+        <div>
+            {% if result %}
+                <h3>Decrypted Text:</h3>
+                <p>{{ result }}</p>
+            {% endif %}
+            <br>
+            <br>
+            <a href="https://cifkao.github.io/html-midi-player/" class="btn btn-secondary btn-block">Midi Player</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
